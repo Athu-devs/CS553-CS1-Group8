@@ -1,14 +1,27 @@
-import requests
-import json
+import os
+import torch
 
-URL = "http://localhost:11434/api/generate"
+# Dummy model loading — replace with your actual model loading code
+MODEL_PATH = "evilceo.Modelfile"
 
-payload = {
-    "model": "evilceo",   
-    "prompt": "Can i wear business casuals",
-    "stream": False
-}
+def load_model():
+    if os.path.exists(MODEL_PATH):
+        # Example: torch.load for a PyTorch model
+        model = torch.load(MODEL_PATH, map_location=torch.device('cpu'))
+        model.eval()
+        return model
+    else:
+        raise FileNotFoundError("Model file not found!")
 
-response = requests.post(URL, json=payload)
+# Cache model so it's not loaded every time
+model = load_model()
 
-print(response.json()['response'])
+def predict_ceo_approval(image_path, description):
+    # Replace this with your real prediction logic
+    if description and "pajama" in description.lower():
+        return {"Disapproved 😡": 1.0}
+    elif image_path:
+        # You can use image_path to run model on uploaded image
+        return {"Approved ✅": 0.95}
+    else:
+        return {"Neutral 😐": 0.5}
