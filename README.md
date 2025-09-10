@@ -13,6 +13,6 @@ hf_oauth_scopes:
 short_description: Case Study 1- Group 8
 ---
 
-Testing 123
+Testing 1234
 
 An example chatbot using [Gradio](https://gradio.app), [`huggingface_hub`](https://huggingface.co/docs/huggingface_hub/v0.22.2/en/index), and the [Hugging Face Inference API](https://huggingface.co/docs/api-inference/index).
